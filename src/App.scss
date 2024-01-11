@@ -1,0 +1,17 @@
+html,
+body,
+#root,
+.app-container {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 20% 70% 10%;
+}
