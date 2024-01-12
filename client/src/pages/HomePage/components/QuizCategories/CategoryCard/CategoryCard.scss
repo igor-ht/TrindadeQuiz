@@ -1,0 +1,17 @@
+.category-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid gray;
+
+  a {
+    text-decoration: none;
+    color: black;
+    
+    .category-name {
+      margin: 1rem;
+      font-size: 1.3rem;
+      font-family: monospace;
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { RootState } from '../state/store';
 const initialState = {
 	progress: 0,
 	grade: 0,
+	categories: ['HTML', 'CSS', 'JavaScript']
 };
 
 const userStatusSlice = createSlice({

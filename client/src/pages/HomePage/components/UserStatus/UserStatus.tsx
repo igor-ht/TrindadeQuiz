@@ -1,6 +1,6 @@
 import './UserStatus.scss';
 import { userStatusState } from '@/redux/features/userStatusSlice';
-import { useAppSelector } from '@/redux/state/hooks';
+import { useAppSelector } from '@/redux/hooks';
 
 export default function UserStatus() {
 	const userStatus = useAppSelector(userStatusState);
