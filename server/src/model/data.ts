@@ -1,4 +1,15 @@
-export const mockData = [
+export type MockDataType = {
+	id: number;
+	name: string;
+	questions: {
+		id: number;
+		question: string;
+		answers: string[];
+		correctAnswer: string;
+	}[];
+}[];
+
+export const mockData: MockDataType = [
 	{
 		id: 1,
 		name: 'html',
