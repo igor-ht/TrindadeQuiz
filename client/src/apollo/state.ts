@@ -4,20 +4,8 @@ interface CategoryStateInterface {
 	id: number;
 	name: string;
 	totalQuestions: number;
-	currentQuestion: number;
-	correctAnswers: number;
 }
 
-interface StateInterface {
-	points: number;
-	progress: number;
-	categories: CategoryStateInterface[];
-}
+const categoriesStateVar = makeVar<CategoryStateInterface[]>([]);
 
-const gameStateVar = makeVar<StateInterface>({
-	points: 0,
-	progress: 0,
-	categories: [],
-});
-
-export default gameStateVar;
+export default categoriesStateVar;

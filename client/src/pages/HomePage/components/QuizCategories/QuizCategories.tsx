@@ -8,6 +8,7 @@ export default function QuizCategories() {
 
 	if (loading) return <div className="home-page-container">Loading...</div>;
 	if (error && !data) return <div className="home-page-container">We got a problem</div>;
+	console.log(data);
 
 	if (data)
 		return (

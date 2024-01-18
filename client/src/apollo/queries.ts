@@ -1,4 +1,4 @@
-import { gql } from './__generated__/gql';
+import { gql } from './__generated__';
 
 const GET_ALL_CATEGORIES = gql(`
 	query getAllCategories {
@@ -13,6 +13,18 @@ const GET_ALL_CATEGORIES = gql(`
 		}
 	}
 `);
+
+const GET_ALL_QUESTIONS_FROM_CATEGORY = gql(`
+	query getAllQuestionsFromCategory($categoryId: Int!) {
+		category(id: $categoryId) {
+			question {
+				id
+				question
+				questionStatus @client
+			}
+		}
+	}
+	`);
 
 const GET_CORRECT_ANSWER = gql(`
 	query getCorrectAnswer($categoryId: Int!, $questionId: Int!) {
