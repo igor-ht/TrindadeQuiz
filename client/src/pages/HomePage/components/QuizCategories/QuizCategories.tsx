@@ -12,13 +12,14 @@ export default function QuizCategories() {
 	if (data)
 		return (
 			<div className="quiz-categories">
-				{data.categories.map((category: any) => {
-					return (
-						<CategoryCard
-							key={category.name}
-							{...{ name: category.name.toUpperCase(), totalQuestions: 10, answered: 0, correct: 0 }}
-						/>
-					);
+				{data.categories.map((category) => {
+					if (category)
+						return (
+							<CategoryCard
+								key={category.name}
+								{...{ name: category.name.toUpperCase(), totalQuestions: 10, answered: 0, correct: 0 }}
+							/>
+						);
 				})}
 			</div>
 		);
