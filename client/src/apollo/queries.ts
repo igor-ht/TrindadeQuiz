@@ -1,4 +1,4 @@
-import { gql } from '../__generated__/gql';
+import { gql } from './__generated__/gql';
 
 const GET_ALL_CATEGORIES = gql(`
 	query getAllCategories {
