@@ -6,7 +6,7 @@ import { nodeEnv } from './config';
 
 const server = express();
 
-// server.use(cors);
+server.use(cors());
 
 server.use(
 	'/graphql',

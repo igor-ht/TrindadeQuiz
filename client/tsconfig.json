@@ -24,6 +24,6 @@
 			"@/*": ["./src/*", "./dist/*", ""]
 		}
 	},
-	"include": ["src", "public/data.ts"],
+	"include": ["src", "public/data.ts", "codegen.ts"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }
