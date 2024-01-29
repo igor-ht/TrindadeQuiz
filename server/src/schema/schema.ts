@@ -20,10 +20,12 @@ const CategoryType = new GraphQLObjectType({
 		name: { type: GraphQLNonNull(GraphQLString) },
 		questions: {
 			type: GraphQLNonNull(new GraphQLList(QuestionType)),
+			description: 'List of all questions from a category',
 			resolve: (parent) => parent.questions,
 		},
 		question: {
 			type: GraphQLNonNull(QuestionType),
+			description: 'Question by id',
 			args: { id: { type: GraphQLInt } },
 			resolve: (parent, args) => parent.questions.find((question: { id: number }) => question.id === args.id),
 		},

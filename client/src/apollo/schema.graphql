@@ -1,0 +1,7 @@
+type Question {
+	status: String!
+}
+
+extend type Query {
+	question: Question!
+}

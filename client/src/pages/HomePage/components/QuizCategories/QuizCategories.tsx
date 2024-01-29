@@ -6,9 +6,10 @@ import { useQuery } from '@apollo/client';
 export default function QuizCategories() {
 	const { loading, error, data } = useQuery(GET_ALL_CATEGORIES);
 
+	console.log(data);
+
 	if (loading) return <div className="home-page-container">Loading...</div>;
 	if (error && !data) return <div className="home-page-container">We got a problem</div>;
-	console.log(data);
 
 	if (data)
 		return (

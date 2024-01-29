@@ -1,22 +1,22 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import categoriesStateVar from './state';
+// import categoriesStateVar from './state';
 
 const cache = new InMemoryCache({
 	typePolicies: {
-		Query: {
+		// Query: {
+		// 	fields: {
+		// 		category: {
+		// 			read() {
+		// 				return categoriesStateVar();
+		// 			},
+		// 		},
+		// 	},
+		// },
+		Question: {
 			fields: {
-				question: {
-					read() {
-						return categoriesStateVar();
-					},
-				},
-			},
-		},
-		Questions: {
-			fields: {
-				questionStatus: {
-					read(state = 'not answered') {
-						return state;
+				status: {
+					read(status = 'not answered') {
+						return status;
 					},
 				},
 			},
@@ -25,7 +25,7 @@ const cache = new InMemoryCache({
 });
 
 const client = new ApolloClient({
-	uri: 'http://localhost:3000/graphql/',
+	uri: 'http://localhost:3000/graphql',
 	cache,
 });
 
