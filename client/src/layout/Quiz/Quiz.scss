@@ -17,6 +17,9 @@
   .quiz-container {
     display: flex;
     flex-direction: column;
+    font-family: system-ui;
+    color: rgb(34, 34, 66);
+    font-size: 1rem;
 
     .current-question {
       display: flex;
