@@ -1,11 +1,14 @@
 header {
   display: flex;
   flex-direction: row;
+  height: min-content;
 
   .header-logo {
+    height: min-content;
     img {
-      width: 100px;
-      height: 100px;
+      width: 70px;
+      height: 70px;
+      margin: 0.2rem;
     }
   }
 }

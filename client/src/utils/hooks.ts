@@ -16,5 +16,5 @@ export function useHandleCurrentQuestion(id: number) {
 
 	const correctAnswer = correctAnswerQuery?.category.question.correctAnswer;
 
-	return { loading, error, currentQuestion, getCorrectAnswer, correctAnswer, categoriesState };
+	return { loading, error, currentQuestion, getCorrectAnswer, correctAnswer, categoriesState, category };
 }

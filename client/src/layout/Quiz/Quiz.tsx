@@ -1,8 +1,8 @@
 import './Quiz.scss';
-import Button from './components/Button/Button';
 import categoriesStateVar from '@/apollo/state';
 import { useHandleCurrentQuestion } from '@/utils/hooks';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 type QuizProps = {
 	id: number;
@@ -15,7 +15,9 @@ type CurrentAnswer = {
 
 export default function Quiz(props: QuizProps) {
 	const [currentAnswer, setCurrentAnswer] = useState<CurrentAnswer>({ answer: '', status: 'idle' });
-	const { loading, error, currentQuestion, getCorrectAnswer, correctAnswer, categoriesState } = useHandleCurrentQuestion(props.id);
+	const { loading, error, currentQuestion, getCorrectAnswer, correctAnswer, categoriesState, category } = useHandleCurrentQuestion(
+		props.id
+	);
 
 	const handleCurrentAnswer = (answer: string) => {
 		if (currentAnswer.status !== 'idle') return;
@@ -23,13 +25,11 @@ export default function Quiz(props: QuizProps) {
 	};
 
 	const handleQuestionAnswered = async () => {
+		if (currentAnswer.status !== 'idle') return;
 		const res = await getCorrectAnswer();
 		if (res) {
-			if (res.data?.category.question.correctAnswer === currentAnswer.answer) {
-				setCurrentAnswer({ answer: currentAnswer.answer, status: 'correct' });
-			} else {
-				setCurrentAnswer({ answer: currentAnswer.answer, status: 'incorrect' });
-			}
+			const isCorrect = res.data?.category.question.correctAnswer === currentAnswer.answer;
+			setCurrentAnswer({ answer: currentAnswer.answer, status: isCorrect ? 'correct' : 'incorrect' });
 		}
 	};
 
@@ -68,14 +68,24 @@ export default function Quiz(props: QuizProps) {
 	if (!currentQuestion)
 		return (
 			<div className="quiz-container">
-				<p>Quizz is complete!</p>
+				<div className="quiz-complete">
+					<p>Quizz is complete!</p>
+					<p>
+						You got {category?.correctAnswers} correct answers from a total of {category?.totalQuestions} questions.
+					</p>
+					<Link to="/">
+						<button type="button">Back to Home</button>
+					</Link>
+				</div>
 			</div>
 		);
 
 	return (
 		<div className="quiz-container">
 			<div className="current-question">
-				<p className="question">Question: {currentQuestion.question}</p>
+				<p className="question">
+					{currentQuestion.id}. Question: {currentQuestion.question}
+				</p>
 				<ul>
 					{currentQuestion.answers.map((answer, i) => {
 						if (answer) {
@@ -98,17 +108,22 @@ export default function Quiz(props: QuizProps) {
 						}
 					})}
 				</ul>
-				<Button
-					className="check-answer-button"
-					type="button"
-					onClick={handleQuestionAnswered}
-					disabled={!currentAnswer.answer || currentAnswer.status !== 'idle'}
-				/>
-				<button
-					type="button"
-					onClick={handleNextQuestion}>
-					Next question
-				</button>
+				<section className="button-section">
+					<button
+						className="check-answer-button"
+						type="button"
+						onClick={handleQuestionAnswered}
+						disabled={!currentAnswer.answer}>
+						Check answer
+					</button>
+					<button
+						type="button"
+						className="next-question-button"
+						onClick={handleNextQuestion}
+						disabled={currentAnswer.status === 'idle'}>
+						Next question
+					</button>
+				</section>
 			</div>
 		</div>
 	);

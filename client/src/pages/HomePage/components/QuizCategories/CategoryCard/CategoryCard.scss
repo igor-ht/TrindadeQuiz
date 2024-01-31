@@ -1,36 +1,60 @@
 .link-to-category {
   text-decoration: none;
   color: rgb(34, 34, 66);
+  user-select: none;
 
   .category-card-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 1rem;
-    background-color: #ddebd2;
-    box-shadow: 0 0 10px 1px rgb(186, 186, 186);
+    border: 1px solid rgb(198, 198, 198);
+    background-color: #eaeaea;
+    box-shadow: 0 0 10px 1px rgb(198, 198, 198);
     color: rgb(34, 34, 66);
     font-family: system-ui;
-
-    .category-name {
-      font-size: 1.5rem;
-      font-weight: 600;
-      h1 {
-        margin: 0.5rem 0 0;
-      }
+  }
+  .category-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    h1 {
+      margin: 0.5rem 0 0;
     }
   }
 
-  .category-process {
+  .category-progress {
+    max-width: 70%;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0.5rem 0;
     h2 {
       margin: 0;
     }
   }
 
   .category-status {
+    width: 70%;
+    max-width: 70%;
     p {
       font-size: 1rem;
       font-weight: 500;
+      margin: 0;
+    }
+  }
+
+  span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1.2rem 0;
+  }
+
+  &:hover {
+    .category-card-container {
+      border: 1px solid rgb(34, 34, 66);
+      background-color: rgb(34, 34, 66);
+      color: #eaeaea;
     }
   }
 }

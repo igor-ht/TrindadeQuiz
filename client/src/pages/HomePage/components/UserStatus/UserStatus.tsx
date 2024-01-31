@@ -7,19 +7,14 @@ export default function UserStatus() {
 
 	const calculateProgress = () => {
 		const totalQuestions = categoriesVar.reduce((acc, category) => acc + category.totalQuestions, 0);
-		const answeredQuestions = categoriesVar.reduce((acc, category) => acc + category.currentQuestion, 0);
 		if (!totalQuestions) return '0%';
+		const answeredQuestions = categoriesVar.reduce((acc, category) => acc + category.currentQuestion, 0);
 		return Math.round((answeredQuestions / totalQuestions) * 100) + '%';
 	};
 
 	const calculatePoints = () => {
-		const totalPoints = 100;
-		const totalQuestions = categoriesVar.reduce((acc, category) => acc + category.totalQuestions, 0);
-		if (!totalQuestions) return '0/100';
-		const pointsPerQuestion = totalPoints / totalQuestions;
-		const answeredQuestions = categoriesVar.reduce((acc, category) => acc + category.currentQuestion, 0);
-		const pointsEarned = Math.round(answeredQuestions * pointsPerQuestion);
-		return `${pointsEarned}/${totalPoints}`;
+		const totalPoints = Math.round(categoriesVar.reduce((acc, category) => acc + (category.correctAnswers * 10) / categoriesVar.length, 0));
+		return `${totalPoints || 0}/${100}`;
 	};
 
 	return (
