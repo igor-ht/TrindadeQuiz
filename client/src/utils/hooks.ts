@@ -1,5 +1,5 @@
-import { GET_ALL_QUESTIONS_FROM_CATEGORY, GET_CORRECT_ANSWER } from '@/apollo/queries';
 import categoriesStateVar from '@/apollo/state';
+import { GET_ALL_QUESTIONS_FROM_CATEGORY, GET_CORRECT_ANSWER } from '@/apollo/queries';
 import { useQuery, useReactiveVar, useLazyQuery } from '@apollo/client';
 
 export function useHandleCurrentQuestion(id: number) {

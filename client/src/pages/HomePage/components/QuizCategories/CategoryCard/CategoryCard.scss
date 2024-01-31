@@ -1,17 +1,36 @@
-.category-card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid gray;
+.link-to-category {
+  text-decoration: none;
+  color: rgb(34, 34, 66);
 
-  a {
-    text-decoration: none;
-    color: black;
-    
+  .category-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: #ddebd2;
+    box-shadow: 0 0 10px 1px rgb(186, 186, 186);
+    color: rgb(34, 34, 66);
+    font-family: system-ui;
+
     .category-name {
-      margin: 1rem;
-      font-size: 1.3rem;
-      font-family: monospace;
+      font-size: 1.5rem;
+      font-weight: 600;
+      h1 {
+        margin: 0.5rem 0 0;
+      }
+    }
+  }
+
+  .category-process {
+    h2 {
+      margin: 0;
+    }
+  }
+
+  .category-status {
+    p {
+      font-size: 1rem;
+      font-weight: 500;
     }
   }
 }

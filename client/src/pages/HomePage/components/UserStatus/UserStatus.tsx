@@ -24,12 +24,14 @@ export default function UserStatus() {
 
 	return (
 		<div className="user-status">
-			<section>
-				<h1>Current progress: {calculateProgress()}</h1>
-			</section>
-			<section>
-				<h1>Total Points: {calculatePoints()} </h1>
-			</section>
+			<div className="card">
+				<section>
+					<h1>Current progress: {calculateProgress()}</h1>
+				</section>
+				<section>
+					<h1>Total Points: {calculatePoints()} </h1>
+				</section>
+			</div>
 		</div>
 	);
 }

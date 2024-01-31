@@ -17,6 +17,11 @@ export default function Quiz(props: QuizProps) {
 	const [currentAnswer, setCurrentAnswer] = useState<CurrentAnswer>({ answer: '', status: 'idle' });
 	const { loading, error, currentQuestion, getCorrectAnswer, correctAnswer, categoriesState } = useHandleCurrentQuestion(props.id);
 
+	const handleCurrentAnswer = (answer: string) => {
+		if (currentAnswer.status !== 'idle') return;
+		setCurrentAnswer({ answer: answer, status: 'idle' });
+	};
+
 	const handleQuestionAnswered = async () => {
 		const res = await getCorrectAnswer();
 		if (res) {
@@ -73,23 +78,24 @@ export default function Quiz(props: QuizProps) {
 				<p className="question">Question: {currentQuestion.question}</p>
 				<ul>
 					{currentQuestion.answers.map((answer, i) => {
-						if (answer)
+						if (answer) {
+							const classAnswer =
+								answer === correctAnswer && currentAnswer.status !== 'idle'
+									? 'correct'
+									: answer === currentAnswer.answer && currentAnswer.status === 'idle'
+									? 'selected'
+									: answer === currentAnswer.answer && currentAnswer.status === 'incorrect'
+									? 'incorrect'
+									: '';
 							return (
 								<li
-									className={
-										answer === currentAnswer.answer
-											? currentAnswer.status === 'idle'
-												? 'selected'
-												: currentAnswer.status
-											: currentAnswer.answer === answer && correctAnswer === answer
-											? 'correct'
-											: ''
-									}
-									onClick={() => setCurrentAnswer({ answer: answer, status: 'idle' })}
+									className={classAnswer}
+									onClick={() => handleCurrentAnswer(answer)}
 									key={i}>
 									{answer}
 								</li>
 							);
+						}
 					})}
 				</ul>
 				<Button

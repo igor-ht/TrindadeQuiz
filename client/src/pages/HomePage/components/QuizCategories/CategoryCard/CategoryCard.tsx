@@ -10,13 +10,15 @@ interface IProps {
 
 export default function CategoryCard(props: IProps) {
 	return (
-		<div className="category-card-container">
-			<Link to={`/${props.name?.toLowerCase()}Quiz`}>
+		<Link
+			className="link-to-category"
+			to={`/${props.name?.toLowerCase()}Quiz`}>
+			<div className="category-card-container">
 				<section className="category-name">
 					<h1>{props.name}</h1>
 				</section>
 				<section className="category-progress">
-					<h2>{(props.answered * 100) / props.totalQuestions}%</h2>
+					<h2>Progress: {(props.answered * 100) / props.totalQuestions}%</h2>
 				</section>
 				<section className="category-status">
 					<span>
@@ -35,7 +37,7 @@ export default function CategoryCard(props: IProps) {
 						<p>Total Points: {props.correct * 10}</p>
 					</span>
 				</section>
-			</Link>
-		</div>
+			</div>
+		</Link>
 	);
 }
