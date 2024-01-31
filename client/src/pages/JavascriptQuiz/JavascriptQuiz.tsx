@@ -1,8 +1,7 @@
 import Quiz from '@/layout/Quiz/Quiz';
 
-const CATEGORY_ID = 3;
-
 export default function JavascriptQuiz() {
+	const CATEGORY_ID = 3;
 	return (
 		<div className="quizpage-container">
 			<h1>JavaScript Quiz</h1>

@@ -1,8 +1,8 @@
 import Quiz from '@/layout/Quiz/Quiz';
 
-const CATEGORY_ID = 1;
-
 export default function HtmlQuiz() {
+	const CATEGORY_ID = 1;
+
 	return (
 		<div className="quizpage-container">
 			<h1>Html Quiz</h1>

@@ -1,28 +1,29 @@
 import './QuizCategories.scss';
 import CategoryCard from './CategoryCard/CategoryCard';
-import { GET_ALL_CATEGORIES } from '@/apollo/queries';
-import { useQuery } from '@apollo/client';
+import categoriesStateVar from '@/apollo/state';
+import { useReactiveVar } from '@apollo/client';
 
 export default function QuizCategories() {
-	const { loading, error, data } = useQuery(GET_ALL_CATEGORIES);
+	const categoriesVar = useReactiveVar(categoriesStateVar);
 
-	console.log(data);
-
-	if (loading) return <div className="home-page-container">Loading...</div>;
-	if (error && !data) return <div className="home-page-container">We got a problem</div>;
-
-	if (data)
-		return (
-			<div className="quiz-categories">
-				{data.categories.map((category) => {
+	return (
+		<div className="quiz-categories">
+			{categoriesVar
+				?.sort((a, b) => a.id - b.id)
+				?.map((category) => {
 					if (category)
 						return (
 							<CategoryCard
 								key={category.name}
-								{...{ name: category.name.toUpperCase(), totalQuestions: 10, answered: 0, correct: 0 }}
+								{...{
+									name: category.name?.toUpperCase(),
+									totalQuestions: category.totalQuestions,
+									answered: category.currentQuestion,
+									correct: category.correctAnswers,
+								}}
 							/>
 						);
 				})}
-			</div>
-		);
+		</div>
+	);
 }

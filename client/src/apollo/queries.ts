@@ -5,6 +5,9 @@ const GET_ALL_CATEGORIES = gql(`
 		categories {
 			id
 			name
+			questions {
+				id
+			}
 		}
 	}
 `);

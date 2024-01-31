@@ -11,7 +11,7 @@ interface IProps {
 export default function CategoryCard(props: IProps) {
 	return (
 		<div className="category-card-container">
-			<Link to={`/${props.name.toLowerCase()}Quiz`}>
+			<Link to={`/${props.name?.toLowerCase()}Quiz`}>
 				<section className="category-name">
 					<h1>{props.name}</h1>
 				</section>
