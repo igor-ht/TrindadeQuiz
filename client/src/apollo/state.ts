@@ -1,7 +1,7 @@
 import { makeVar } from '@apollo/client';
 
 interface CategoryStateInterface {
-	id: number;
+	id: string;
 	name: string;
 	currentQuestion: number;
 	totalQuestions: number;

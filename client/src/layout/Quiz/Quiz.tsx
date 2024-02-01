@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 type QuizProps = {
-	id: number;
+	id: string;
 };
 
 type CurrentAnswer = {
@@ -15,7 +15,7 @@ type CurrentAnswer = {
 
 export default function Quiz(props: QuizProps) {
 	const [currentAnswer, setCurrentAnswer] = useState<CurrentAnswer>({ answer: '', status: 'idle' });
-	const { loading, error, currentQuestion, getCorrectAnswer, correctAnswer, categoriesState, category } = useHandleCurrentQuestion(
+	const { loading, error, currentQuestion, getCorrectAnswer, correctAnswer, categoriesState, currentCategory } = useHandleCurrentQuestion(
 		props.id
 	);
 
@@ -27,14 +27,16 @@ export default function Quiz(props: QuizProps) {
 	const handleQuestionAnswered = async () => {
 		if (currentAnswer.status !== 'idle') return;
 
-		const res = await getCorrectAnswer({ variables: { categoryId: props.id, questionId: currentQuestion?.id || 0 } });
+		const res = await getCorrectAnswer({
+			variables: { categoryId: props.id, questionId: currentQuestion?.id || '1' },
+		});
 		if (res) {
 			const isCorrect = res.data?.category.question.correctAnswer === currentAnswer.answer;
 			setCurrentAnswer({ answer: currentAnswer.answer, status: isCorrect ? 'correct' : 'incorrect' });
 		}
 	};
 
-	const handleNextQuestion = () => {
+	const updateLocalStateVar = async () => {
 		categoriesStateVar(
 			categoriesState.map((category) => {
 				if (category.id === props.id) {
@@ -47,6 +49,10 @@ export default function Quiz(props: QuizProps) {
 				return category;
 			})
 		);
+	};
+
+	const handleNextQuestion = async () => {
+		await updateLocalStateVar();
 		setCurrentAnswer({ answer: '', status: 'idle' });
 	};
 
@@ -67,13 +73,13 @@ export default function Quiz(props: QuizProps) {
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
-	if (!currentQuestion || category?.currentQuestion! >= category?.totalQuestions!)
+	if (!currentQuestion || currentCategory?.currentQuestion! >= currentCategory?.totalQuestions!)
 		return (
 			<div className="quiz-container">
 				<div className="quiz-complete">
 					<p>Quizz is complete!</p>
 					<p>
-						You got {category?.correctAnswers} correct answers from a total of {category?.totalQuestions} questions.
+						You got {currentCategory?.correctAnswers} correct answers from a total of {currentCategory?.totalQuestions} questions.
 					</p>
 					<Link to="/">
 						<button type="button">Back to Home</button>

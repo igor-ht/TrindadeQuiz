@@ -12,6 +12,16 @@ const cache = new InMemoryCache({
 				},
 			},
 		},
+		Questions: {
+			keyFields: ['id'],
+			fields: {
+				answers: {
+					merge(existing = [], incoming) {
+						return [...existing, ...incoming];
+					},
+				},
+			},
+		},
 	},
 });
 

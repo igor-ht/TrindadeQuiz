@@ -1,8 +1,8 @@
 export type MockDataType = {
-	id: number;
+	id: string;
 	name: string;
 	questions: {
-		id: number;
+		id: string;
 		question: string;
 		answers: string[];
 		correctAnswer: string;
@@ -11,11 +11,11 @@ export type MockDataType = {
 
 export const mockData: MockDataType = [
 	{
-		id: 1,
+		id: '1',
 		name: 'html',
 		questions: [
 			{
-				id: 1,
+				id: '1',
 				question: 'What does HTML stand for?',
 				answers: [
 					'Hyper Text Markup Language',
@@ -27,13 +27,13 @@ export const mockData: MockDataType = [
 				correctAnswer: 'Hyper Text Markup Language',
 			},
 			{
-				id: 2,
+				id: '2',
 				question: 'Which HTML element is used to define an unordered list?',
 				answers: ['ul', 'ol', 'li', 'dl', 'dt'],
 				correctAnswer: 'ul',
 			},
 			{
-				id: 3,
+				id: '3',
 				question: 'What is the correct HTML for creating a hyperlink?',
 				answers: [
 					'<a href="http://www.example.com">Click me</a>',
@@ -45,19 +45,19 @@ export const mockData: MockDataType = [
 				correctAnswer: '<a href="http://www.example.com">Click me</a>',
 			},
 			{
-				id: 4,
+				id: '4',
 				question: 'Which attribute is used to provide additional information about an element in HTML?',
 				answers: ['info', 'description', 'metadata', 'extra', 'additional'],
 				correctAnswer: 'metadata',
 			},
 			{
-				id: 5,
+				id: '5',
 				question: 'In HTML, which tag is used to create a line break?',
 				answers: ['<br>', '<lb>', '<break>', '<ln>', '<newline>'],
 				correctAnswer: '<br>',
 			},
 			{
-				id: 6,
+				id: '6',
 				question: 'What is the purpose of the HTML "meta" tag?',
 				answers: [
 					'Define metadata about an HTML document',
@@ -69,19 +69,19 @@ export const mockData: MockDataType = [
 				correctAnswer: 'Define metadata about an HTML document',
 			},
 			{
-				id: 7,
+				id: '7',
 				question: 'Which HTML element is used to define the structure of an HTML document?',
 				answers: ['<html>', '<head>', '<body>', '<structure>', '<document>'],
 				correctAnswer: '<html>',
 			},
 			{
-				id: 8,
+				id: '8',
 				question: 'What does the "alt" attribute in the HTML "img" tag stand for?',
 				answers: ['Alternate', 'Alignment', 'Attribute', 'All Text', 'Alternate Text'],
 				correctAnswer: 'Alternate Text',
 			},
 			{
-				id: 9,
+				id: '9',
 				question: 'What is the correct way to comment out multiple lines in HTML?',
 				answers: [
 					'<!-- This is a comment -->',
@@ -93,7 +93,7 @@ export const mockData: MockDataType = [
 				correctAnswer: '<!-- This is a comment -->',
 			},
 			{
-				id: 10,
+				id: '10',
 				question: 'Which HTML element is used to define the structure of an HTML table?',
 				answers: ['<table>', '<tr>', '<td>', '<th>', '<tab>'],
 				correctAnswer: '<table>',
@@ -101,17 +101,17 @@ export const mockData: MockDataType = [
 		],
 	},
 	{
-		id: 2,
+		id: '2',
 		name: 'css',
 		questions: [
 			{
-				id: 1,
+				id: '1',
 				question: 'Which property is used to change the text color in CSS?',
 				answers: ['text-color', 'color', 'font-color', 'text-style', 'text-fill'],
 				correctAnswer: 'color',
 			},
 			{
-				id: 2,
+				id: '2',
 				question: 'What does CSS stand for?',
 				answers: [
 					'Counter Strike: Source',
@@ -123,19 +123,19 @@ export const mockData: MockDataType = [
 				correctAnswer: 'Cascading Style Sheets',
 			},
 			{
-				id: 3,
+				id: '3',
 				question: 'Which CSS property is used to set the background color of an element?',
 				answers: ['bgcolor', 'background-color', 'color-background', 'element-color', 'background'],
 				correctAnswer: 'background-color',
 			},
 			{
-				id: 4,
+				id: '4',
 				question: 'In CSS, which selector targets all elements on the page?',
 				answers: ['* selector', '.all selector', '#all selector', '$all selector', '&all selector'],
 				correctAnswer: '* selector',
 			},
 			{
-				id: 5,
+				id: '5',
 				question: 'What is the purpose of the CSS "float" property?',
 				answers: [
 					'Make an element float on the page',
@@ -147,13 +147,13 @@ export const mockData: MockDataType = [
 				correctAnswer: 'Float text to the left or right',
 			},
 			{
-				id: 6,
+				id: '6',
 				question: 'Which CSS property is used to control the spacing between lines of text?',
 				answers: ['line-height', 'text-spacing', 'letter-spacing', 'line-spacing', 'text-line'],
 				correctAnswer: 'line-height',
 			},
 			{
-				id: 7,
+				id: '7',
 				question: 'What is the CSS box model used for?',
 				answers: [
 					'Layout and design of elements on a page',
@@ -165,13 +165,13 @@ export const mockData: MockDataType = [
 				correctAnswer: 'Layout and design of elements on a page',
 			},
 			{
-				id: 8,
+				id: '8',
 				question: 'Which CSS property is used to set the width of an element in percentage?',
 				answers: ['width', 'size', 'percentage-width', 'element-width', 'width-percentage'],
 				correctAnswer: 'width',
 			},
 			{
-				id: 9,
+				id: '9',
 				question: 'What does the CSS property "position: absolute" do?',
 				answers: [
 					'Positions an element relative to its normal position',
@@ -183,7 +183,7 @@ export const mockData: MockDataType = [
 				correctAnswer: 'Positions an element relative to its normal position',
 			},
 			{
-				id: 10,
+				id: '10',
 				question: 'Which CSS pseudo-class is used to select and style the last child of an element?',
 				answers: [':last-child', ':nth-child', ':first-child', ':child-last', ':end-child'],
 				correctAnswer: ':last-child',
@@ -191,11 +191,11 @@ export const mockData: MockDataType = [
 		],
 	},
 	{
-		id: 3,
+		id: '3',
 		name: 'javascript',
 		questions: [
 			{
-				id: 1,
+				id: '1',
 				question: 'What is the purpose of the "typeof" operator in JavaScript?',
 				answers: [
 					'Determine the type of a variable',
@@ -207,7 +207,7 @@ export const mockData: MockDataType = [
 				correctAnswer: 'Determine the type of a variable',
 			},
 			{
-				id: 2,
+				id: '2',
 				question: 'What is a closure in JavaScript?',
 				answers: [
 					'A way to close the browser window',
@@ -219,25 +219,25 @@ export const mockData: MockDataType = [
 				correctAnswer: 'A combination of a function and the lexical environment within which that function was declared',
 			},
 			{
-				id: 3,
+				id: '3',
 				question: 'What keyword is used to declare a variable in JavaScript?',
 				answers: ['var', 'let', 'const', 'int', 'string'],
 				correctAnswer: 'var',
 			},
 			{
-				id: 4,
+				id: '4',
 				question: 'What does the "this" keyword refer to in JavaScript?',
 				answers: ['The current function', 'The global object', 'The calling object', 'A specific variable', 'A reserved keyword'],
 				correctAnswer: 'The calling object',
 			},
 			{
-				id: 5,
+				id: '5',
 				question: 'Which method is used to add a new element to the end of an array in JavaScript?',
 				answers: ['push()', 'pop()', 'shift()', 'unshift()', 'concat()'],
 				correctAnswer: 'push()',
 			},
 			{
-				id: 6,
+				id: '6',
 				question: 'What is the purpose of the "addEventListener" method in JavaScript?',
 				answers: [
 					"Modify an element's style",
@@ -249,13 +249,13 @@ export const mockData: MockDataType = [
 				correctAnswer: 'Attach an event handler function to an element',
 			},
 			{
-				id: 7,
+				id: '7',
 				question: 'What is the result of the expression 5 + "5" in JavaScript?',
 				answers: ['55', '10', 'Error', '25', 'Undefined'],
 				correctAnswer: '55',
 			},
 			{
-				id: 8,
+				id: '8',
 				question: 'How do you comment out a single line in JavaScript?',
 				answers: [
 					'// This is a comment',
@@ -267,7 +267,7 @@ export const mockData: MockDataType = [
 				correctAnswer: '// This is a comment',
 			},
 			{
-				id: 9,
+				id: '9',
 				question: 'What is the purpose of the "JSON.parse()" method in JavaScript?',
 				answers: [
 					'Parse a string as JSON',
@@ -279,7 +279,7 @@ export const mockData: MockDataType = [
 				correctAnswer: 'Parse a string as JSON',
 			},
 			{
-				id: 10,
+				id: '10',
 				question: 'Which loop is used for iterating over the properties of an object in JavaScript?',
 				answers: ['for...in loop', 'for loop', 'while loop', 'do...while loop', 'forEach loop'],
 				correctAnswer: 'for...in loop',
