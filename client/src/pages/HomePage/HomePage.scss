@@ -4,4 +4,12 @@
   grid-template-columns: 1fr;
   grid-template-rows: 25% 75%;
   justify-items: center;
+
+  .loading,
+  .error {
+    font-family: system-ui;
+    color: rgb(34, 34, 66);
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
 }

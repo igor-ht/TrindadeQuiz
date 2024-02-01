@@ -26,7 +26,8 @@ export default function Quiz(props: QuizProps) {
 
 	const handleQuestionAnswered = async () => {
 		if (currentAnswer.status !== 'idle') return;
-		const res = await getCorrectAnswer();
+
+		const res = await getCorrectAnswer({ variables: { categoryId: props.id, questionId: currentQuestion?.id || 0 } });
 		if (res) {
 			const isCorrect = res.data?.category.question.correctAnswer === currentAnswer.answer;
 			setCurrentAnswer({ answer: currentAnswer.answer, status: isCorrect ? 'correct' : 'incorrect' });
@@ -52,7 +53,7 @@ export default function Quiz(props: QuizProps) {
 	if (loading) {
 		return (
 			<div className="quiz-container">
-				<p>Loading...</p>
+				<p className="loading">Loading...</p>
 			</div>
 		);
 	}
@@ -60,12 +61,13 @@ export default function Quiz(props: QuizProps) {
 	if (error) {
 		return (
 			<div className="quiz-container">
-				<p>Error: {error.message}</p>
+				<p className="error">Error: {error.message}</p>
 			</div>
 		);
 	}
 
-	if (!currentQuestion)
+	// eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
+	if (!currentQuestion || category?.currentQuestion! >= category?.totalQuestions!)
 		return (
 			<div className="quiz-container">
 				<div className="quiz-complete">

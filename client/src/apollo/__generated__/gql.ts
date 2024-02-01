@@ -14,8 +14,8 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n\tquery GetAllCategories {\n\t\tcategories {\n\t\t\tid\n\t\t\tname\n\t\t\tquestions {\n\t\t\t\tid\n\t\t\t}\n\t\t}\n\t}\n": types.GetAllCategoriesDocument,
-    "\n\tquery GetAllQuestionsFromCategory($id: Int!) {\n\t\tcategory(id: $id) {\n\t\t\tname\n\t\t\tquestions {\n\t\t\t\tid\n\t\t\t\tquestion\n\t\t\t\tanswers\n\t\t\t\tstatus @client\n\t\t\t}\n\t\t}\n\t}\n": types.GetAllQuestionsFromCategoryDocument,
-    "\n\tquery GetCorrectAnswer($categoryId: Int!, $questionId: Int!) {\n\t\tcategory(id: $categoryId) {\n\t\t\tquestion(id: $questionId) {\n\t\t\t\tcorrectAnswer\n\t\t\t}\n\t\t}\n\t}\n": types.GetCorrectAnswerDocument,
+    "\n\tquery GetAllQuestionsFromCategory($id: Int!) {\n\t\tcategory(id: $id) {\n\t\t\tid\n\t\t\tname\n\t\t\tquestions {\n\t\t\t\tid\n\t\t\t\tquestion\n\t\t\t\tanswers\n\t\t\t}\n\t\t}\n\t}\n": types.GetAllQuestionsFromCategoryDocument,
+    "\n\tquery GetCorrectAnswer($categoryId: Int!, $questionId: Int!) {\n\t\tcategory(id: $categoryId) {\n\t\t\tid\n\t\t\tquestion(id: $questionId) {\n\t\t\t\tid\n\t\t\t\tcorrectAnswer\n\t\t\t}\n\t\t}\n\t}\n": types.GetCorrectAnswerDocument,
 };
 
 /**
@@ -39,11 +39,11 @@ export function gql(source: "\n\tquery GetAllCategories {\n\t\tcategories {\n\t\
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n\tquery GetAllQuestionsFromCategory($id: Int!) {\n\t\tcategory(id: $id) {\n\t\t\tname\n\t\t\tquestions {\n\t\t\t\tid\n\t\t\t\tquestion\n\t\t\t\tanswers\n\t\t\t\tstatus @client\n\t\t\t}\n\t\t}\n\t}\n"): (typeof documents)["\n\tquery GetAllQuestionsFromCategory($id: Int!) {\n\t\tcategory(id: $id) {\n\t\t\tname\n\t\t\tquestions {\n\t\t\t\tid\n\t\t\t\tquestion\n\t\t\t\tanswers\n\t\t\t\tstatus @client\n\t\t\t}\n\t\t}\n\t}\n"];
+export function gql(source: "\n\tquery GetAllQuestionsFromCategory($id: Int!) {\n\t\tcategory(id: $id) {\n\t\t\tid\n\t\t\tname\n\t\t\tquestions {\n\t\t\t\tid\n\t\t\t\tquestion\n\t\t\t\tanswers\n\t\t\t}\n\t\t}\n\t}\n"): (typeof documents)["\n\tquery GetAllQuestionsFromCategory($id: Int!) {\n\t\tcategory(id: $id) {\n\t\t\tid\n\t\t\tname\n\t\t\tquestions {\n\t\t\t\tid\n\t\t\t\tquestion\n\t\t\t\tanswers\n\t\t\t}\n\t\t}\n\t}\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n\tquery GetCorrectAnswer($categoryId: Int!, $questionId: Int!) {\n\t\tcategory(id: $categoryId) {\n\t\t\tquestion(id: $questionId) {\n\t\t\t\tcorrectAnswer\n\t\t\t}\n\t\t}\n\t}\n"): (typeof documents)["\n\tquery GetCorrectAnswer($categoryId: Int!, $questionId: Int!) {\n\t\tcategory(id: $categoryId) {\n\t\t\tquestion(id: $questionId) {\n\t\t\t\tcorrectAnswer\n\t\t\t}\n\t\t}\n\t}\n"];
+export function gql(source: "\n\tquery GetCorrectAnswer($categoryId: Int!, $questionId: Int!) {\n\t\tcategory(id: $categoryId) {\n\t\t\tid\n\t\t\tquestion(id: $questionId) {\n\t\t\t\tid\n\t\t\t\tcorrectAnswer\n\t\t\t}\n\t\t}\n\t}\n"): (typeof documents)["\n\tquery GetCorrectAnswer($categoryId: Int!, $questionId: Int!) {\n\t\tcategory(id: $categoryId) {\n\t\t\tid\n\t\t\tquestion(id: $questionId) {\n\t\t\t\tid\n\t\t\t\tcorrectAnswer\n\t\t\t}\n\t\t}\n\t}\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

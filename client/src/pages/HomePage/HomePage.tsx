@@ -26,9 +26,19 @@ export default function HomePage() {
 		categoriesStateVar([...categories]);
 	}, [data]);
 
-	if (loading) return <div className="home-page-container">Loading...</div>;
+	if (loading)
+		return (
+			<div className="home-page-container">
+				<p className='loading'>Loading...</p>
+			</div>
+		);
 
-	if (error && !data) return <div className="home-page-container">We got a problem. Try again later.</div>;
+	if (error && !data)
+		return (
+			<div className="home-page-container">
+				<p className="error">Error: {error.message}</p>
+			</div>
+		);
 
 	if (data)
 		return (
