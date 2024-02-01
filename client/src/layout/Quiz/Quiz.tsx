@@ -14,10 +14,12 @@ type CurrentAnswer = {
 };
 
 export default function Quiz(props: QuizProps) {
+	const categoriesState = categoriesStateVar();
+	const currentCategory = categoriesState.find((category) => category.id === props.id);
+	const currentQuestionIndex = ((currentCategory?.currentQuestion || 0) + 1).toString() || '1';
+
 	const [currentAnswer, setCurrentAnswer] = useState<CurrentAnswer>({ answer: '', status: 'idle' });
-	const { loading, error, currentQuestion, getCorrectAnswer, correctAnswer, categoriesState, currentCategory } = useHandleCurrentQuestion(
-		props.id
-	);
+	const { loading, error, currentQuestion, getCorrectAnswer, correctAnswer } = useHandleCurrentQuestion(props.id, currentQuestionIndex);
 
 	const handleCurrentAnswer = (answer: string) => {
 		if (currentAnswer.status !== 'idle') return;
@@ -64,7 +66,7 @@ export default function Quiz(props: QuizProps) {
 		);
 	}
 
-	if (error) {
+	if (error && (currentCategory?.currentQuestion || 0) !== (currentCategory?.totalQuestions || 0)) {
 		return (
 			<div className="quiz-container">
 				<p className="error">Error: {error.message}</p>

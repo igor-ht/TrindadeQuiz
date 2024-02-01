@@ -1,28 +1,24 @@
-import categoriesStateVar from '@/apollo/state';
 import { GET_CURRENT_QUESTION, GET_CORRECT_ANSWER } from '@/apollo/queries';
 import { useLazyQuery, useQuery } from '@apollo/client';
 import { useState } from 'react';
 
-export function useHandleCurrentQuestion(id: string) {
-	const categoriesState = categoriesStateVar();
-	const currentCategory = categoriesState.find((currentCategory) => currentCategory.id === id);
-	const currentQuestionId = ((currentCategory?.currentQuestion || 0) + 1).toString() || '1';
-
-	const { data, loading, error } = useQuery(GET_CURRENT_QUESTION, {
-		variables: { categoryId: id, questionId: currentQuestionId },
-		fetchPolicy: 'cache-and-network',
-	});
-
-	const currentQuestion = data?.category.question;
-
-	const [getCorrectAnswer, { data: correctAnswerQuery }] = useLazyQuery(GET_CORRECT_ANSWER, {
-		variables: { categoryId: id, questionId: currentQuestionId },
+export function useHandleCurrentQuestion(categoryId: string, questionId: string) {
+	const {
+		data: currentQuestionQuery,
+		loading,
+		error,
+	} = useQuery(GET_CURRENT_QUESTION, {
+		variables: { categoryId: categoryId, questionId: questionId },
 		fetchPolicy: 'network-only',
 	});
 
+	const currentQuestion = currentQuestionQuery?.category.question;
+
+	const [getCorrectAnswer, { data: correctAnswerQuery }] = useLazyQuery(GET_CORRECT_ANSWER);
+
 	const correctAnswer = correctAnswerQuery?.category.question.correctAnswer;
 
-	return { loading, error, currentQuestion, getCorrectAnswer, correctAnswer, categoriesState, currentCategory };
+	return { loading, error, currentQuestion, getCorrectAnswer, correctAnswer };
 }
 
 export function useLocalStorage<T>(key: string, initialValue: T) {

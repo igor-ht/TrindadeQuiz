@@ -9,7 +9,7 @@ export default function QuizCategories() {
 	return (
 		<div className="quiz-categories">
 			{categoriesVar
-				?.sort((a, b) => a.id - b.id)
+				?.sort((a, b) => +a.id - +b.id)
 				?.map((category) => {
 					if (category)
 						return (
