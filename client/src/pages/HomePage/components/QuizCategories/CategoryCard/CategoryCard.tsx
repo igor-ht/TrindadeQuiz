@@ -40,7 +40,9 @@ export default function CategoryCard(props: IProps) {
 					</span>
 					<span>
 						<p>Total Points: </p>
-						<p>{props.correct * 10}</p>
+						<p>
+							{props.correct * 10}/{props.totalQuestions * 10}
+						</p>
 					</span>
 				</section>
 			</div>
